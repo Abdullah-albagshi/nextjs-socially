@@ -18,10 +18,11 @@ import { LinkIcon, MapPin } from 'lucide-react';
 
 async function Sidebar() {
 	const clerkUser = await currentUser();
-	const user = await getUserById(clerkUser?.id as string);
+	if (!clerkUser) return <LoggedOutUser />;
+	const user = await getUserById(clerkUser?.id);
 	if (!user) return null;
 	return (
-		<div className=' sticky top-20'>
+		<div className='sticky top-20'>
 			<SignedOut>
 				<div className='flex flex-col gap-2 border rounded-sm p-8'>
 					<h2 className='text-lg text-center'>Welcome Back!</h2>
@@ -69,7 +70,7 @@ async function Sidebar() {
 									</p>
 									<p className='text-sm text-muted-foreground'>Following</p>
 								</div>
-                <Separator orientation='vertical' />
+								<Separator orientation='vertical' />
 								<div>
 									<p className='text-sm text-primary'>
 										{user._count.followers}
@@ -79,10 +80,12 @@ async function Sidebar() {
 							</div>
 
 							<Separator className='my-4' />
-								<div className='flex items-center justify-start gap-2 self-start w-full'>
-									<MapPin width={16} className='text-muted-foreground' />
-									<p className='text-sm text-muted-foreground'>{user.location ?? 'No Location'}</p>
-								</div>
+							<div className='flex items-center justify-start gap-2 self-start w-full'>
+								<MapPin width={16} className='text-muted-foreground' />
+								<p className='text-sm text-muted-foreground'>
+									{user.location ?? 'No Location'}
+								</p>
+							</div>
 
 							<div className='flex items-center justify-start gap-2 self-start w-full'>
 								<LinkIcon width={16} className='text-muted-foreground' />
@@ -107,3 +110,26 @@ async function Sidebar() {
 }
 
 export default Sidebar;
+
+const LoggedOutUser = () => {
+	return (
+		<div className=' sticky top-20'>
+			<SignedOut>
+				<div className='flex flex-col gap-2 border rounded-sm p-8'>
+					<h2 className='text-lg text-center'>Welcome Back!</h2>
+					<p className='text-center text-gray-500 mt-2'>
+						Login to access your profile and connect with others.
+					</p>
+					<SignInButton mode='modal'>
+						<Button className='mt-2' variant='outline'>
+							Sign In
+						</Button>
+					</SignInButton>
+					<SignUpButton mode='modal'>
+						<Button variant='default'>Sign Up</Button>
+					</SignUpButton>
+				</div>
+			</SignedOut>
+		</div>
+	);
+};
