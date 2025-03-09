@@ -1,14 +1,24 @@
 "use client";
 
 import { getPosts } from "@/actions/posts.action";
+import { Card } from "../ui/card";
 
+
+type Posts = NonNullable<Awaited<ReturnType<typeof getPosts>>>
+type Post = Posts[number]
 
 interface PostCardProps {
-  post: Awaited<ReturnType<typeof getPosts>>
+  post: Post
 }
 
 const PostCard = ({ post }: PostCardProps) => {
-  return <div>PostCard</div>;
+  return (
+    <Card>
+      <div>
+        {post.content}
+      </div>
+    </Card>
+  );
 };
 
 export default PostCard;  

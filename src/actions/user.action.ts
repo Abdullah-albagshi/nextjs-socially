@@ -100,7 +100,7 @@ export async function getRandomUsers() {
 		});
 		return randomUsers;
 	} catch (error) {
-		console.error('Error retuning suggested Users');
+		console.error('Error retuning suggested Users', error);
 		return [];
 	}
 }
