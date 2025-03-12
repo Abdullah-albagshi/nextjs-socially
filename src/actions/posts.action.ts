@@ -38,10 +38,14 @@ export async function getPosts() {
 						name: true,
 						username: true,
 						image: true,
+            id: true
 					},
 				},
 				comments: {
 					select: {
+            id: true,
+            createdAt:true,
+            content:true,
 						author: {
 							select: {
 								id: true,
@@ -107,7 +111,7 @@ export async function toggleLike(postId: string) {
 				},
 			});
 		} else {
-			prisma.$transaction([
+			await prisma.$transaction([
 				prisma.like.create({
 					data: {
 						postId,
@@ -119,7 +123,7 @@ export async function toggleLike(postId: string) {
 							prisma.notification.create({
 								data: {
 									type: 'LIKE',
-									creatorId: postId,
+									creatorId: userId,
 									postId: postId,
 									userId: post.authorId,
 								},

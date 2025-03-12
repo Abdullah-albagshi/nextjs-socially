@@ -1,10 +1,12 @@
 import { getPosts } from "@/actions/posts.action";
+import { getDBUserId } from "@/actions/user.action";
 import CreatePost from "@/components/CreatePost";
+import PostCard from "@/components/PostCard/PostCard";
 import WhoToFollow from "@/components/WhoToFollow/WhoToFollow";
 import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
-  const user = await currentUser();
+  const user = await getDBUserId();
   const posts = await getPosts();
   console.log(posts)
   return (
@@ -12,10 +14,10 @@ export default async function Home() {
       <div className="col-span-6">
         {user ? <CreatePost/> : null}
 
-        <div className="mt-8">
-          {/* {posts.map((post) => (
-            <PostCard key={post.id} post={post} />
-          ))} */}
+        <div className="mt-8 flex flex-col gap-6">
+          {posts?.map((post) => (
+            <PostCard key={post.id} post={post} dbUserId={user ?? null} />
+          ))}
         </div>
       </div>
       <div className="hidden lg:block lg:col-span-4 sticky top-20">

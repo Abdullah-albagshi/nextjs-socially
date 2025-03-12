@@ -22,22 +22,6 @@ async function Sidebar() {
 	if (!user) return null;
 	return (
 		<div className='sticky top-20'>
-			<SignedOut>
-				<div className='flex flex-col gap-2 border rounded-sm p-8'>
-					<h2 className='text-lg text-center'>Welcome Back!</h2>
-					<p className='text-center text-gray-500 mt-2'>
-						Login to access your profile and connect with others.
-					</p>
-					<SignInButton mode='modal'>
-						<Button className='mt-2' variant='outline'>
-							Sign In
-						</Button>
-					</SignInButton>
-					<SignUpButton mode='modal'>
-						<Button variant='default'>Sign Up</Button>
-					</SignUpButton>
-				</div>
-			</SignedOut>
 			<SignedIn>
 				<Card>
 					<CardContent className='pt-6'>
@@ -114,7 +98,7 @@ const LoggedOutUser = () => {
 	return (
 		<div className=' sticky top-20'>
 			<SignedOut>
-				<div className='flex flex-col gap-2 border rounded-sm p-8'>
+				<div className='flex flex-col gap-4 border rounded-sm p-8'>
 					<h2 className='text-lg text-center'>Welcome Back!</h2>
 					<p className='text-center text-gray-500 mt-2'>
 						Login to access your profile and connect with others.
