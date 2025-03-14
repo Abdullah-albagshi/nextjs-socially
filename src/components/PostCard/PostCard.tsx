@@ -48,7 +48,6 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 			setOptimisticLikes((prev) => prev + (hasLiked ? -1 : 1));
 			await toggleLike(post.id);
 		} catch (error) {
-			console.log('errorerrorerrorerrorerrorerror');
 			setOptimisticLikes(post._count.likes);
 			setHasLiked(post.likes.some((like) => like.userId === dbUserId));
 		} finally {

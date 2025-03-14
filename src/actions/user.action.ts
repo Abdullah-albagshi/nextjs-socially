@@ -29,7 +29,6 @@ export async function syncUser() {
 				image: user?.imageUrl,
 			},
 		});
-		console.log('dbUser');
 		return dbUser;
 	} catch (err) {
 		console.log('Error Syncing User', err);
