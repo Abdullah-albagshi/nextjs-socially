@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="201.025 116.564 180 180" width="180px" height="180px">
-  <circle cx="291.025" cy="206.564" r="90" fill="black" stroke="white" stroke-width="8"/>
-  <path d="M 252.55 172.81 C 252.55 157.81 295.109 146.901 315.109 146.901 C 335.109 146.901 280.597 160.544 281.196 179.371 C 281.553 190.585 295.304 195.375 301.221 200.275 C 305.238 203.601 305.644 206.978 295.794 212.449 C 283.62 219.211 296.529 208.812 306.438 208.211 C 316.354 207.611 323.276 216.812 328.294 231.265 C 338.326 260.16 248.2 259.538 262.118 245.175 C 269.448 237.611 323.265 233.194 313.033 230.033 C 268.509 216.276 298.37 212.598 290.938 213.802" fill="white" stroke="none"/>
+  <circle cx="291.025" cy="206.564" r="90" fill="black" stroke-width="8"/>
   <circle cx="236.946" cy="207.016" r="8" fill="white"/>
   <path d="M 335.878 200.233 L 345.878 210.233 M 335.878 210.233 L 345.878 200.233" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <text style="fill: rgb(255, 255, 255); font-family: Arial, sans-serif; font-size: 60px; text-transform: uppercase; white-space: pre;" transform="matrix(1.8553869724273682, 0, 0, 2.054832935333252, -244.48497009277344, -201.74221801757812)" x="267.583" y="220.202">S</text>
 </svg>
