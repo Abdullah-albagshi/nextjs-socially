@@ -110,7 +110,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
                       {post.author.name}
                     </Link>
                     <div className='flex items-center space-x-2 text-sm text-muted-foreground'>
-                      <Link href={`profile/${post.author.username}`}>
+                      <Link href={`/profile/${post.author.username}`}>
                         @{post.author.username}
                       </Link>
                       <span>•</span>
