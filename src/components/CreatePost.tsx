@@ -9,6 +9,7 @@ import { Button } from './ui/button';
 import { ImageIcon, Loader2Icon, SendIcon } from 'lucide-react';
 import { createPost } from '@/actions/posts.action';
 import toast from 'react-hot-toast';
+import ImageUpload from './ImageUpload';
 
 function CreatePost() {
 	const [content, setContent] = useState<string>('');
@@ -74,6 +75,22 @@ function CreatePost() {
 					</div>
 				</div>
 				<Separator className='my-7' />
+
+				{(showImageUpload || imageUrl) && (
+          <>
+					<div className='border rounded-lg p-4'>
+						<ImageUpload
+							endpoint='postImage'
+							value={imageUrl}
+							onChange={(url) => {
+								setImageUrl(url);
+								if (!url) setShowImageUpload(false);
+							}}
+						/>
+					</div>
+				<Separator className='my-7' />
+        </>
+				)}
 
 				<div className='flex justify-between'>
 					<Button

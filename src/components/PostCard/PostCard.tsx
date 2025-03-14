@@ -103,45 +103,47 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 							<div className='flex items-start justify-between flex-1'>
 								<div className='flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate flex-1 justify-between'>
 									<div className='flex gap-2'>
-                    <Link
-                      href={`/profile/${post.author.username}`}
-                      className='font-semibold truncate'
-                    >
-                      {post.author.name}
-                    </Link>
-                    <div className='flex items-center space-x-2 text-sm text-muted-foreground'>
-                      <Link href={`/profile/${post.author.username}`}>
-                        @{post.author.username}
-                      </Link>
-                      <span>•</span>
-                      <span>
-                        {formatDistanceToNow(new Date(post.createdAt))} ago
-                      </span>
-                    </div>
-                  </div>
-                  {dbUserId === post.authorId && (
+										<Link
+											href={`/profile/${post.author.username}`}
+											className='font-semibold truncate'
+										>
+											{post.author.name}
+										</Link>
+										<div className='flex items-center space-x-2 text-sm text-muted-foreground'>
+											<Link href={`/profile/${post.author.username}`}>
+												@{post.author.username}
+											</Link>
+											<span>•</span>
+											<span>
+												{formatDistanceToNow(new Date(post.createdAt))} ago
+											</span>
+										</div>
+									</div>
+									{dbUserId === post.authorId && (
 										<DeletePostDialog
 											isDeleting={isDeleting}
 											onDelete={handleDeletePost}
-                      />
+										/>
 									)}
 								</div>
 							</div>
-							<p className='mt-2 text-sm text-foreground break-words'>
-								{post.content}
-							</p>
 						</div>
-						{/* Post Image */}
-						{post.image && (
-							<div className='rounded-lg overflow-hidden'>
-								<Image
-									src={post.image}
-									alt='Post Content'
-									className='w-full h-auto object-cover'
-								/>
-							</div>
-						)}
 					</div>
+          <div className='flex flex-col'>
+            <p className='mt-2 text-sm text-foreground break-words'>
+              {post.content}
+            </p>
+            {/* Post Image */}
+            {post.image && (
+              <div className='rounded-lg overflow-hidden'>
+                <img
+                  src={post.image}
+                  alt='Post Content'
+                  className='w-full h-auto object-cover'
+                />
+              </div>
+            )}
+          </div>
 					{/* Likes and Comments buttons */}
 					<div className='flex items-center pt-2 space-x-4'>
 						{user ? (
@@ -189,7 +191,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 						</Button>
 					</div>
 					{/* Comments section */}
-					<div 
+					<div
 						className={clsx(
 							'overflow-hidden transition-all duration-300 ease-in-out',
 							showComments ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'
@@ -244,9 +246,9 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 										>
 											{isCommenting ? (
 												<>
-                          <Loader2 className='size-4 animate-spin' />
-                          Posting...
-                        </>
+													<Loader2 className='size-4 animate-spin' />
+													Posting...
+												</>
 											) : (
 												<>
 													<SendIcon className='size-4' />
