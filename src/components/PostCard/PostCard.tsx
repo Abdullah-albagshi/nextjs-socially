@@ -141,7 +141,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
                 <img
                   src={post.image}
                   alt='Post Content'
-                  className='w-full h-auto object-cover'
+                  className='w-full h-auto object-cover max-w-[400px] max-h-[400px]'
                 />
               </div>
             )}

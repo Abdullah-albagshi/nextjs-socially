@@ -13,7 +13,7 @@ export default async function Home() {
       <div className="col-span-6">
         {user ? <CreatePost/> : null}
 
-        <div className="mt-8 flex flex-col gap-6">
+        <div className="flex flex-col gap-6">
           {posts?.map((post) => (
             <PostCard key={post.id} post={post} dbUserId={user ?? null} />
           ))}
