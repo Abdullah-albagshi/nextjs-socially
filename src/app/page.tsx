@@ -3,7 +3,6 @@ import { getDBUserId } from "@/actions/user.action";
 import CreatePost from "@/components/CreatePost";
 import PostCard from "@/components/PostCard/PostCard";
 import WhoToFollow from "@/components/WhoToFollow/WhoToFollow";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Home() {
   const user = await getDBUserId();

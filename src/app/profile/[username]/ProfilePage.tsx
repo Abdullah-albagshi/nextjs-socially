@@ -88,6 +88,7 @@ function ProfilePage({
 			setIsFollowing(!isFollowing);
 		} catch (error) {
 			toast.error('Failed to update follow status');
+      console.log("Failed to update follow status",error)
 		} finally {
 			setIsUpdatingFollow(false);
 		}

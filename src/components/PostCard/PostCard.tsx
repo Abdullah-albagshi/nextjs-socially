@@ -14,7 +14,6 @@ import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { formatDistanceToNow } from 'date-fns';
 import DeletePostDialog from './DeletePostDialog';
-import Image from 'next/image';
 import { Button } from '../ui/button';
 import { HeartIcon, Loader2, MessageCircleIcon, SendIcon } from 'lucide-react';
 import clsx from 'clsx';
@@ -48,6 +47,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 			setOptimisticLikes((prev) => prev + (hasLiked ? -1 : 1));
 			await toggleLike(post.id);
 		} catch (error) {
+      console.log(error)
 			setOptimisticLikes(post._count.likes);
 			setHasLiked(post.likes.some((like) => like.userId === dbUserId));
 		} finally {
@@ -65,6 +65,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 				setNewComment('');
 			}
 		} catch (error) {
+      console.log(error)
 			toast.error('Failed to add comment');
 		} finally {
 			setIsCommenting(false);
@@ -82,6 +83,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 				throw new Error(res?.error);
 			}
 		} catch (error) {
+      console.log(error)
 			toast.error('Failed to deletePost');
 		} finally {
 			setIsDeleting(false);

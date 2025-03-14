@@ -18,7 +18,7 @@ const NotificationCounter = ({ notifications }: Props) => {
 	useEffect(() => {
     if(!notificationsId) return;
     markNotificationAsRead(notificationsId);
-	}, []);
+	}, [notificationsId]);
 
 	return (
 		<CardHeader className='border-b'>
