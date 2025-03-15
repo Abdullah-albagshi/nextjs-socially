@@ -104,7 +104,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 						<div className='flex-1 min-w-0'>
 							<div className='flex items-start justify-between flex-1'>
 								<div className='flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate flex-1 justify-between'>
-									<div className='flex gap-2'>
+									<div className='flex gap-2 w-full justify-start items-center'>
 										<Link
 											href={`/profile/${post.author.username}`}
 											className='font-semibold truncate'
@@ -112,7 +112,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 											{post.author.name}
 										</Link>
 										<div className='flex items-center space-x-2 text-sm text-muted-foreground'>
-											<Link href={`/profile/${post.author.username}`}>
+											<Link href={`/profile/${post.author.username}`} className='hidden sm:block'>
 												@{post.author.username}
 											</Link>
 											<span>•</span>
@@ -120,13 +120,15 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 												{formatDistanceToNow(new Date(post.createdAt))} ago
 											</span>
 										</div>
-									</div>
 									{dbUserId === post.authorId && (
+                    <div className='ms-auto'>
 										<DeletePostDialog
 											isDeleting={isDeleting}
 											onDelete={handleDeletePost}
-										/>
+                      />
+                      </div>
 									)}
+									</div>
 								</div>
 							</div>
 						</div>
