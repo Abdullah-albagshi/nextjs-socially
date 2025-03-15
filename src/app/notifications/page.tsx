@@ -37,7 +37,7 @@ async function page() {
       <Card>
         <NotificationCounter notifications={unreadNotifications} />
         <CardContent className='p-0'>
-          <ScrollArea className='h-[calc(100dvh-12rem)]'>
+          <ScrollArea className='lg:h-[calc(100dvh-12rem)]'>
             {
               notifications?.length === 0 ? <div className="p-4 text-muted-foreground text-center">No Notifications yet</div> :
               notifications?.map(notification=>(
