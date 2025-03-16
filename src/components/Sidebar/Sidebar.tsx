@@ -37,7 +37,7 @@ async function Sidebar() {
 								<div className='mt-4 space-y-1'>
 									<h3 className='font-semibold'>{user.name}</h3>
 									<p className='text-sm text-muted-foreground'>
-										{user.username}
+										@{user.username}
 									</p>
 								</div>
 							</Link>
@@ -47,19 +47,19 @@ async function Sidebar() {
 							<Separator className='my-4' />
 
 							<div className='flex flex-row justify-between flex-1 w-full'>
-								<div>
+								<Link href={`/${user.username}/following`}>
 									<p className='text-sm text-primary'>
 										{user._count.following}
 									</p>
 									<p className='text-sm text-muted-foreground'>Following</p>
-								</div>
+								</Link>
 								<Separator orientation='vertical' />
-								<div>
+								<Link href={`/${user.username}/followers`}>
 									<p className='text-sm text-primary'>
 										{user._count.followers}
 									</p>
 									<p className='text-sm text-muted-foreground'>Followers</p>
-								</div>
+								</Link>
 							</div>
 
 							<Separator className='my-4' />
