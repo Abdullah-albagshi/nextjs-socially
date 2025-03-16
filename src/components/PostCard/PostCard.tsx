@@ -95,7 +95,7 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 			<CardContent className='p-4 sm:p-6'>
 				<div className='space-y-4'>
 					<div className='flex gap-3 sm:gap-4'>
-						<Link href={`/profile/${post.author.username}`}>
+						<Link href={`/${post.author.username}`}>
 							<Avatar className='w-10 h-10 border-2'>
 								<AvatarImage src={post.author.image as string} />
 								<AvatarFallback>{post.author?.username}</AvatarFallback>
@@ -106,13 +106,13 @@ const PostCard = ({ post, dbUserId }: PostCardProps) => {
 								<div className='flex flex-col sm:flex-row sm:items-center sm:space-x-2 truncate flex-1 justify-between'>
 									<div className='flex gap-2 w-full justify-start items-center'>
 										<Link
-											href={`/profile/${post.author.username}`}
+											href={`/${post.author.username}`}
 											className='font-semibold truncate'
 										>
 											{post.author.name}
 										</Link>
 										<div className='flex items-center space-x-2 text-sm text-muted-foreground'>
-											<Link href={`/profile/${post.author.username}`} className='hidden sm:block'>
+											<Link href={`/${post.author.username}`} className='hidden sm:block'>
 												@{post.author.username}
 											</Link>
 											<span>•</span>

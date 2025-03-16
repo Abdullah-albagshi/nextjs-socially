@@ -21,7 +21,7 @@ async function WhoToFollow() {
 					<>
 						<div className='flex justify-between gap-4 my-2'>
 							<Link
-								href={`/profile/${user.username}`}
+								href={`/${user.username}`}
 								className='flex flex-row items-center justify-center gap-2'
 							>
 								<Avatar className='w-10 h-10 border-2'>

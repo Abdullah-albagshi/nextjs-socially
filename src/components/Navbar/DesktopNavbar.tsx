@@ -32,7 +32,7 @@ export default async function DesktopNavbar() {
           </Button>
           <Button variant="ghost" className="flex items-center gap-2" asChild>
             <Link
-              href={`/profile/${
+              href={`/${
                 user.username ?? user.emailAddresses[0].emailAddress.split("@")[0]
               }`}
             >

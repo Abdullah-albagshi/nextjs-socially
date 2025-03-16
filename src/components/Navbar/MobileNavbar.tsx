@@ -85,7 +85,7 @@ function MobileNavbar() {
                   onClick={hideNav}
 								>
 									<Link
-										href={`/profile/${
+										href={`/${
 											user.username ??
 											user.emailAddresses[0].emailAddress.split('@')[0]
 										}`}
