@@ -104,7 +104,7 @@ export async function getRandomUsers() {
 	}
 }
 
-export async function toggleFollow(targetedUserId: string) {
+export async function toggleFollow(targetedUserId: string, pathname?: string) {
 	try {
 		const userId = await getDBUserId();
     if(!userId) return;
@@ -145,9 +145,8 @@ export async function toggleFollow(targetedUserId: string) {
 					},
 				}),
 			]);
-		}
-
-    revalidatePath('/')
+		} 
+    if(pathname) revalidatePath(pathname)
     return {
       success: true
     }

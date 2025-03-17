@@ -11,7 +11,7 @@ function FollowUser({ userId }: { userId: string }) {
 	const handleFollow = async () => {
 		setIsLoading(true);
 		try {
-			toggleFollow(userId);
+			toggleFollow(userId, '/');
 			toast.success('User Followed Successfully');
 			setIsLoading(false);
 		} catch {

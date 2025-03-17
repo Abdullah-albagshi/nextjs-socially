@@ -11,6 +11,8 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
 import FollowUser from '@/components/WhoToFollow/FollowUser';
+import FollowButtonServer from '@/components/FollowButton/FollowButtonServer';
+
 
 export async function generateMetadata({
 	params,
@@ -26,12 +28,12 @@ export async function generateMetadata({
 	};
 }
 
+
 async function ProfilePageServer({ params }: { params: { username: string } }) {
 	const user = await getProfileByUsername(params.username);
 	const followers = await getUserFollowers(params.username);
 	const dbUserId = await getDBUserId();
 	const isSignedInUser = user?.id === dbUserId;
-	console.log(followers, 'followers');
 	if (!user) notFound();
 
 	return (
@@ -49,12 +51,14 @@ async function ProfilePageServer({ params }: { params: { username: string } }) {
 					</div>
 				) : (
 					<div>
-						{followers.map(({ follower }) => (
+						{followers.map(({ follower }, index) => (
 							<div
 								key={follower.id}
-								className={`flex items-center justify-between gap-4 p-2 rounded hover:bg-muted/25 transition-colors`}
+								className={`flex items-center justify-between gap-4 p-2 rounded hover:bg-muted/20 transition-colors border-b ${
+									index === followers.length - 1 ? 'border-b-0' : ''
+								}`}
 							>
-								<Link href={`/${follower.username}`} className='flex gap-4'>
+								<Link href={`/${follower.username}`} className='flex gap-4 items-center'>
 									<Avatar className='mt-1'>
 										<AvatarImage src={follower.image ?? '/avatar.png'} />
 									</Avatar>
@@ -66,7 +70,9 @@ async function ProfilePageServer({ params }: { params: { username: string } }) {
 										<p className='text-white text-base mt-1'>{follower.bio}</p>
 									</div>
 								</Link>
-								{(dbUserId !== follower.id) && <FollowUser userId={follower.id} />}
+								{dbUserId !== follower.id && (
+									<FollowButtonServer userId={follower.id} />
+								)}
 							</div>
 						))}
 					</div>
