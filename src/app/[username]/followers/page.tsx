@@ -43,7 +43,7 @@ async function ProfilePageServer({ params }: { params: { username: string } }) {
 			<CardContent>
 				{followers.length === 0 ? (
 					<div className='p-4 text-muted-foreground text-center'>
-						You don't have any followers
+						{isSignedInUser ? 'You' : user.name} {"don't"} have any followers
 					</div>
 				) : (
 					<div>
