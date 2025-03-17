@@ -1,16 +1,12 @@
 import {
 	getProfileByUsername,
 	getUserFollowers,
-	getUserFollowings,
-	getUserPosts,
-	isFollowing,
 } from '@/actions/profile.action';
 import { notFound } from 'next/navigation';
 import { getDBUserId } from '@/actions/user.action';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import Link from 'next/link';
-import FollowUser from '@/components/WhoToFollow/FollowUser';
 import FollowButtonServer from '@/components/FollowButton/FollowButtonServer';
 
 
